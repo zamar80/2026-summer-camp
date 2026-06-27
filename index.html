@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>2026 여름수련회 기도카드</title>
+<style>
+  :root {
+    --navy: #1a3a5c;
+    --navy-deep: #112540;
+    --gold: #c8860a;
+    --gold-light: #f0b429;
+    --white: #ffffff;
+    --off-white: #f7f9fc;
+    --text: #1e293b;
+    --muted: #64748b;
+    --card-radius: 20px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    background: var(--navy-deep);
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', '맑은 고딕', sans-serif;
+    color: var(--text);
+    touch-action: pan-y;
+  }
+
+  /* ── 배경 ── */
+  .bg {
+    position: fixed; inset: 0;
+    background: linear-gradient(160deg, #0d2240 0%, #1a3a5c 50%, #0f2a45 100%);
+    z-index: 0;
+  }
+  .bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(200,134,10,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(59,130,196,0.1) 0%, transparent 50%);
+  }
+
+  /* ── 상단 헤더 ── */
+  .top-header {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 10;
+    padding: env(safe-area-inset-top, 12px) 20px 10px;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 12px);
+    text-align: center;
+  }
+  .church-name {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+  }
+  .main-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.3px;
+  }
+  .sub-theme {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold-light);
+    border-bottom: 1.5px solid var(--gold);
+    padding-bottom: 1px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── 진행 바 ── */
+  .progress-wrap {
+    position: fixed; top: 82px; left: 0; right: 0;
+    z-index: 10;
+    padding: 0 20px;
+  }
+  .progress-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 0;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    transition: all 0.3s ease;
+  }
+  .dot.active {
+    background: var(--gold-light);
+    width: 20px;
+    border-radius: 3px;
+  }
+  .dot.visited {
+    background: rgba(240,180,41,0.4);
+  }
+
+  /* ── 카드 슬라이더 ── */
+  .slider-viewport {
+    position: fixed;
+    top: 108px;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 72px);
+    left: 0; right: 0;
+    overflow: hidden;
+    z-index: 5;
+  }
+
+  .slider-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  .card-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── 카드 본체 ── */
+  .card {
+    background: var(--white);
+    border-radius: var(--card-radius);
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  /* 커버 카드 (첫 번째) */
+  .card.cover {
+    background: linear-gradient(150deg, #1a3a5c 0%, #0d2240 100%);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .cover-anchor {
+    font-size: 42px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+  }
+  .cover-title {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+  .cover-theme-box {
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-size: 14px;
+    font-weight: 800;
+    padding: 8px 22px;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+  .cover-verse {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    padding: 0 28px;
+    font-style: italic;
+  }
+  .cover-verse strong { color: rgba(255,255,255,0.85); font-style: normal; }
+  .cover-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.04em;
+  }
+  .cover-hint::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 2px;
+    margin: 6px auto 0;
+  }
+
+  /* 일반 섹션 카드 */
+  .card-header-strip {
+    background: var(--navy);
+    border-bottom: 3px solid var(--gold);
+    padding: 14px 18px 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+  }
+  .section-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  .card-body {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px 18px 20px;
+    overscroll-behavior: contain;
+  }
+  .card-body::-webkit-scrollbar { display: none; }
+
+  /* 기도제목 아이템 */
+  .prayer-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .prayer-item:last-child { margin-bottom: 0; }
+
+  .num-badge {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .num-badge.gold { background: var(--gold); }
+
+  .prayer-text {
+    font-size: 14.5px;
+    line-height: 1.72;
+    color: var(--text);
+    flex: 1;
+    word-break: keep-all;
+  }
+
+  /* 마지막 카드 (아멘) */
+  .card.closing {
+    background: linear-gradient(150deg, #1a3a5c 0%, #0d2240 100%);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .closing-icon { font-size: 48px; margin-bottom: 20px; }
+  .closing-text {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.7;
+    padding: 0 24px;
+    letter-spacing: -0.3px;
+    margin-bottom: 28px;
+  }
+  .closing-text em {
+    display: block;
+    font-style: normal;
+    color: var(--gold-light);
+    font-size: 20px;
+    margin-top: 4px;
+  }
+  .verse-box {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 14px 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.65;
+    font-style: italic;
+    margin: 0 20px;
+  }
+
+  /* ── 하단 네비 ── */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 10;
+    padding: 10px 20px;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .nav-btn {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    -webkit-appearance: none;
+  }
+  .nav-btn.prev {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+  }
+  .nav-btn.next {
+    background: var(--gold);
+    color: var(--navy-deep);
+    box-shadow: 0 4px 16px rgba(200,134,10,0.4);
+  }
+  .nav-btn:disabled { opacity: 0.25; pointer-events: none; }
+  .nav-btn:active { transform: scale(0.92); }
+
+  .counter {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    flex: 1;
+    letter-spacing: 0.06em;
+  }
+  .counter strong { color: rgba(255,255,255,0.85); font-size: 15px; }
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<!-- 상단 헤더 -->
+<div class="top-header">
+  <div class="church-name">군산남성교회 중고등부 · 2026 여름수련회</div>
+  <div class="main-title">수련회 기도카드</div>
+  <div class="sub-theme">예수님과 함께하는 믿음의 항해</div>
+</div>
+
+<!-- 진행 점 -->
+<div class="progress-wrap">
+  <div class="progress-dots" id="dots"></div>
+</div>
+
+<!-- 슬라이더 -->
+<div class="slider-viewport">
+  <div class="slider-track" id="track">
+
+    <!-- 0: 커버 -->
+    <div class="card-slide">
+      <div class="card cover" style="position:relative;">
+        <div class="cover-anchor">⚓</div>
+        <div class="cover-title">2026<br>여름수련회<br>기도카드</div>
+        <div class="cover-theme-box">예수님과 함께하는 믿음의 항해</div>
+        <div class="cover-verse">
+          <strong>"믿음의 주요 또 온전하게 하시는<br>이인 예수를 바라보자"</strong><br>
+          히브리서 12:2
+        </div>
+        <div class="cover-hint">아래 화살표를 눌러 시작하세요</div>
+      </div>
+    </div>
+
+    <!-- 1: 준비와 참여 -->
+    <div class="card-slide">
+      <div class="card">
+        <div class="card-header-strip">
+          <div>
+            <div class="section-label">SECTION 1</div>
+            <div class="section-name">수련회 준비와 참여를 위한 기도</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="prayer-item">
+            <div class="num-badge">1</div>
+            <div class="prayer-text">이번 수련회의 차량과 숙소, 예산과 식사, 날씨와 건강까지 작은 것 하나도 주님의 손 안에 있음을 믿습니다. 모든 준비 과정이 사람의 열심이 아닌 주님의 손길로 채워지게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">2</div>
+            <div class="prayer-text">수련회를 섬기는 교사와 찬양팀이 먼저 은혜를 받고, 먼저 무릎 꿇는 기도자가 되게 하소서. 각자 맡은 역할이 부담이 아니라 기쁨이 되게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">3</div>
+            <div class="prayer-text">학생 한 명 한 명을 주님께서 이름으로 아시오니, 각자의 형편 속에서도 기대하는 마음으로 출발하게 하소서. 단 한 명도 빠지지 않고 소외되지 않도록 인도해 주옵소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">4</div>
+            <div class="prayer-text">고창 석남교회와 협력해 주시는 목사님을 축복하시고, 모든 협의와 준비 과정이 아름다운 동역이 되게 하소서.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2: 예배와 말씀 -->
+    <div class="card-slide">
+      <div class="card">
+        <div class="card-header-strip">
+          <div>
+            <div class="section-label">SECTION 2</div>
+            <div class="section-name">예배와 말씀을 위한 기도</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="prayer-item">
+            <div class="num-badge gold">1</div>
+            <div class="prayer-text">말씀을 준비하는 목사님과 각 공과를 인도할 교사들에게 먼저 성령의 조명을 주소서. 본문 앞에 겸손히 무릎 꿇고, 자신이 먼저 그 말씀에 찔리고 위로받은 자로 서게 하소서. 바쁜 일상 속에서도 말씀 앞에 앉는 시간을 지키게 하시고, 학생 한 명 한 명을 마음에 품고 기도하며 준비하는 자가 되게 하소서. 인간의 열심이 아니라 성령의 능력으로 말씀이 선포되고 나눠지게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">2</div>
+            <div class="prayer-text">개회예배부터 폐회예배까지 모든 예배 시간마다 성령께서 친히 주인 되어 주소서. 말씀을 전하는 자에게는 담대함을, 듣는 학생들에게는 마음의 문이 열리는 은혜를 주소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">3</div>
+            <div class="prayer-text">1과 말씀에서 풍랑 앞에 떨던 제자들처럼 아이들도 자신의 믿음 상태를 정직하게 보게 하시고, 예수님이 진짜 하나님이심을 새롭게 발견하게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">4</div>
+            <div class="prayer-text">2과 말씀에서 풍랑을 뚫고 광인을 찾아오신 예수님의 사랑 앞에, 각자를 묶고 있던 어둠의 결박이 끊어지는 역사가 일어나게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">5</div>
+            <div class="prayer-text">"두려워하지 말고 믿기만 하라"는 3과 말씀이 아이들의 가슴 깊이 닻처럼 내려앉아, 수련회 후에도 흔들리지 않는 믿음의 고백이 되게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">6</div>
+            <div class="prayer-text">세 번의 말씀이 지식으로 끝나지 않고, 각자의 삶 속에서 진짜 항해를 시작하게 하는 출발점이 되게 하소서. 예배를 방해하는 모든 것을 막아주소서.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: 찬양과 기도 -->
+    <div class="card-slide">
+      <div class="card">
+        <div class="card-header-strip">
+          <div>
+            <div class="section-label">SECTION 3</div>
+            <div class="section-name">찬양과 기도 시간을 위한 기도</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="prayer-item">
+            <div class="num-badge">1</div>
+            <div class="prayer-text">찬양이 단지 노래가 아니라 학생들의 삶의 고백이 되게 하소서. 찬양팀이 아이들의 굳은 마음을 여는 통로로 쓰임받게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">2</div>
+            <div class="prayer-text">찬양 가운데 무거운 마음이 내려지고, 억눌렸던 감정이 해방되며, 각자가 하나님 앞에 선 한 영혼임을 느끼게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">3</div>
+            <div class="prayer-text">저녁집회가 깊어질수록 어색하던 기도가 점차 솔직한 고백으로, 울부짖는 회개로, 서로를 향한 중보의 기도로 자라나게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">4</div>
+            <div class="prayer-text">예수님의 권세가 아이들의 기도 가운데 살아 역사하시어, 각자를 사로잡고 있던 두려움과 중독과 외로움이 예수님의 이름 앞에 굴복하게 하소서.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4: 반별 공과 -->
+    <div class="card-slide">
+      <div class="card">
+        <div class="card-header-strip">
+          <div>
+            <div class="section-label">SECTION 4</div>
+            <div class="section-name">반별 공과와 나눔 시간을 위한 기도</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="prayer-item">
+            <div class="num-badge">1</div>
+            <div class="prayer-text">반별 공과 시간이 단순한 내용 정리가 아니라 학생들이 자신의 이야기를 꺼내놓는 솔직한 나눔의 자리가 되게 하소서. 평소 말하지 못했던 두려움과 상처들이 조금씩 흘러나오게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">2</div>
+            <div class="prayer-text">스마트폰 중독, 비교의식, 인정 중독 등 각자를 무덤처럼 가두고 있는 것들을 말씀 앞에 내어놓는 용기를 주소서. 예수님의 권능 앞에 그 사슬을 내려놓게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">3</div>
+            <div class="prayer-text">교사들이 지혜롭게 듣고 섣불리 판단하지 않게 하소서. 말 한마디가 평생의 격려가 되는 은혜로운 시간이 되게 하시고, 공동체가 서로의 짐을 나눠지는 진짜 한 몸이 되게 하소서.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5: 공동체 활동 -->
+    <div class="card-slide">
+      <div class="card">
+        <div class="card-header-strip">
+          <div>
+            <div class="section-label">SECTION 5</div>
+            <div class="section-name">공동체 활동과 전체 일정을 위한 기도</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="prayer-item">
+            <div class="num-badge">1</div>
+            <div class="prayer-text">마을 벽화그리기를 통해 학생들이 지역을 위해 땀 흘리는 섬김의 기쁨을 경험하게 하소서. 붓을 드는 그 순간이 복음을 몸으로 배우는 선교의 첫걸음이 되게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">2</div>
+            <div class="prayer-text">해수욕장 물놀이와 바베큐, 야식과 자유 교제의 모든 시간에도 함께하시는 하나님의 기쁨이 넘치게 하소서. 수련회 후에도 이어지는 진짜 공동체 관계가 만들어지게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">3</div>
+            <div class="prayer-text">모든 이동과 활동 가운데 사고 없이 안전하게 붙들어 주소서. 다툼이나 소외 없이 배려와 섬김이 자연스럽게 흘러나오게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">4</div>
+            <div class="prayer-text">2박 3일 모든 순서가 끝난 자리에, 프로그램의 기억이 아니라 예수님을 만난 감격만이 남게 하소서.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6: 수련회 이후 -->
+    <div class="card-slide">
+      <div class="card">
+        <div class="card-header-strip">
+          <div>
+            <div class="section-label">SECTION 6</div>
+            <div class="section-name">수련회 이후를 위한 기도</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="prayer-item">
+            <div class="num-badge">1</div>
+            <div class="prayer-text">수련회가 끝나고 일상으로 돌아간 후에도 받은 은혜가 식지 않게 하소서. 집으로, 학교로 돌아간 그 자리가 예수님께서 우리 학생들을 파송하신 최고의 선교지임을 잊지 않게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">2</div>
+            <div class="prayer-text">거라사 광인이 온 성내에 예수님을 전했던 것처럼, 우리 학생들도 변화된 표정과 말과 태도로 예수님이 살아계심을 증거하는 자가 되게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">3</div>
+            <div class="prayer-text">수련회의 결단이 뜨거운 감정으로 끝나지 않고, 날마다 말씀 앞에 서고 기도로 예수님께 닻을 내리는 삶의 습관이 되게 하소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">4</div>
+            <div class="prayer-text">교사들도 수련회 후에도 각 학생들을 이름으로 기억하며 품고 기도하는 동행의 사람이 되게 하소서. 부모님들의 마음에도 자녀의 변화를 알아보는 눈을 주소서.</div>
+          </div>
+          <div class="prayer-item">
+            <div class="num-badge">5</div>
+            <div class="prayer-text">이번 수련회가 좋았던 여름의 추억이 아니라, "예수님은 정말 하나님이시구나" 고백하며 믿음의 항해를 진짜로 시작한 영적 분기점이 되게 하소서.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7: 마지막 카드 -->
+    <div class="card-slide">
+      <div class="card closing">
+        <div class="closing-icon">🙏</div>
+        <div class="closing-text">
+          우리의 선장 되신 예수님,
+          <em>이 모든 항해를<br>주님께 온전히 맡깁니다.</em>
+          아멘.
+        </div>
+        <div class="verse-box">
+          "믿음의 주요 또 온전하게 하시는 이인<br>예수를 바라보자"<br>— 히브리서 12:2
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.slider-track -->
+</div><!-- /.slider-viewport -->
+
+<!-- 하단 네비 -->
+<div class="bottom-nav">
+  <button class="nav-btn prev" id="prevBtn" onclick="move(-1)" disabled>◀</button>
+  <div class="counter" id="counter"><strong>1</strong> / 8</div>
+  <button class="nav-btn next" id="nextBtn" onclick="move(1)">▶</button>
+</div>
+
+<script>
+  const TOTAL = 8;
+  let current = 0;
+
+  const track = document.getElementById('track');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const counter = document.getElementById('counter');
+  const dotsWrap = document.getElementById('dots');
+
+  // 점 생성
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    dotsWrap.appendChild(d);
+  }
+
+  function updateUI() {
+    track.style.transform = `translateX(-${current * 100}%)`;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === TOTAL - 1;
+    counter.innerHTML = `<strong>${current + 1}</strong> / ${TOTAL}`;
+
+    const dots = dotsWrap.querySelectorAll('.dot');
+    dots.forEach((d, i) => {
+      d.className = 'dot';
+      if (i === current) d.classList.add('active');
+      else if (i < current) d.classList.add('visited');
+    });
+  }
+
+  function move(dir) {
+    const next = current + dir;
+    if (next < 0 || next >= TOTAL) return;
+    current = next;
+    updateUI();
+  }
+
+  // 터치 스와이프
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let isDragging = false;
+
+  document.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    isDragging = false;
+  }, { passive: true });
+
+  document.addEventListener('touchmove', e => {
+    const dx = e.touches[0].clientX - touchStartX;
+    const dy = e.touches[0].clientY - touchStartY;
+    if (!isDragging && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
+      isDragging = true;
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    if (!isDragging) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) {
+      move(dx < 0 ? 1 : -1);
+    }
+    isDragging = false;
+  });
+
+  // 키보드
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') move(1);
+    if (e.key === 'ArrowLeft') move(-1);
+  });
+
+  updateUI();
+</script>
+</body>
+</html>

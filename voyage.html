@@ -568,6 +568,116 @@
     transition: background .2s ease;
   }
   .prayer-cta a:hover{ background: var(--gold-light); }
+  /* ================= WHY / PURPOSE ================= */
+
+  .why{
+    position:relative;
+    background: var(--cream);
+    padding: 100px 6vw 90px;
+    overflow:hidden;
+  }
+
+  .why-compass{
+    position:absolute;
+    top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    width: min(720px, 90vw);
+    height: min(720px, 90vw);
+    opacity:0.055;
+    pointer-events:none;
+  }
+
+  .why-inner{
+    position:relative;
+    z-index:1;
+    max-width:640px;
+    margin:0 auto;
+  }
+
+  .why-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:28px;
+  }
+  .why-eyebrow-text{
+    font-family: var(--font-body);
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:.24em;
+    color: var(--gold);
+  }
+  .why-eyebrow-line{
+    flex:1;
+    height:1px;
+    background: linear-gradient(90deg, rgba(200,134,10,.55), rgba(200,134,10,.08));
+    max-width:180px;
+  }
+
+  .why-title{
+    font-family: var(--font-kr-display);
+    font-weight:700;
+    color: var(--navy);
+    font-size: clamp(28px, 4.6vw, 42px);
+    line-height:1.3;
+    margin-bottom:44px;
+  }
+
+  .why-block{
+    margin-bottom:36px;
+  }
+  .why-block-label{
+    font-family: var(--font-body);
+    font-size:11.5px;
+    font-weight:600;
+    letter-spacing:.14em;
+    color: var(--gold);
+    margin-bottom:10px;
+  }
+  .why-block p{
+    font-size:15.5px;
+    line-height:1.9;
+    color: var(--navy-soft);
+  }
+
+  .why-verse{
+    margin: 46px 0 40px;
+    padding: 30px 32px;
+    background: var(--navy);
+    border-radius:2px;
+    position:relative;
+  }
+  .why-verse-mark{
+    font-family: var(--font-display);
+    font-size:34px;
+    color: var(--gold-light);
+    line-height:1;
+    display:block;
+    margin-bottom:10px;
+  }
+  .why-verse p{
+    font-family: var(--font-kr-display);
+    font-size:16px;
+    line-height:1.85;
+    color: var(--cream);
+  }
+  .why-verse span{
+    display:block;
+    margin-top:14px;
+    font-family: var(--font-body);
+    font-size:11.5px;
+    letter-spacing:.16em;
+    color: var(--gold-light);
+  }
+
+  .why-closing{
+    font-family: var(--font-kr-display);
+    font-style:italic;
+    font-size:16.5px;
+    color: var(--navy);
+    text-align:center;
+    padding-top:8px;
+  }
 </style>
 </head>
 <body>
@@ -643,6 +753,62 @@
       <div class="info-label">MINISTRY</div>
       <div class="info-value">군산남성교회 중고등부</div>
     </div>
+  </div>
+</section>
+
+<section class="why">
+  <svg class="why-compass" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="95" stroke="#1a3a5c" stroke-width="1" fill="none"/>
+    <circle cx="100" cy="100" r="70" stroke="#1a3a5c" stroke-width="1" fill="none"/>
+    <path d="M100 5 L100 30 M100 170 L100 195 M5 100 L30 100 M170 100 L195 100" stroke="#1a3a5c" stroke-width="1.4"/>
+    <path d="M100 30 L112 100 L100 170 L88 100 Z" fill="#1a3a5c"/>
+  </svg>
+
+  <div class="why-inner">
+    <div class="why-eyebrow">
+      <span class="why-eyebrow-text">WHY VOYAGE OF FAITH</span>
+      <span class="why-eyebrow-line"></span>
+    </div>
+    <h2 class="why-title">우리가 항해를 떠나는 이유</h2>
+
+    <div class="why-block">
+      <div class="why-block-label">성장기의 파도</div>
+      <p>
+        중고등학생 시기는 크고 작은 파도 위에 있는 시간입니다.
+        성적과 진로, SNS 속 비교, 서투른 관계들,
+        &lsquo;나는 누구인가&rsquo;라는 질문들이 쉼 없이 밀려옵니다.
+        방향을 잃기 쉬운 나이입니다.
+      </p>
+    </div>
+
+    <div class="why-verse">
+      <span class="why-verse-mark">&ldquo;</span>
+      <p>믿음의 주요 또 온전하게 하시는 이인<br>예수를 바라보자.</p>
+      <span>히브리서 12:2</span>
+    </div>
+
+    <div class="why-block">
+      <div class="why-block-label">시선을 정하는 일</div>
+      <p>
+        히브리서 기자는 이 흔들리는 삶 속에서 한 가지를 말합니다.
+        여러 파도 중 하나를 골라 맞서 싸우라는 뜻이 아니라,
+        시선을 어디에 둘 것인지를 먼저 정하라는 초대입니다.
+        배가 항로를 잃지 않는 건 파도가 없어서가 아니라,
+        등대를 계속 바라보기 때문입니다.
+      </p>
+    </div>
+
+    <div class="why-block">
+      <div class="why-block-label">이번 여름의 의미</div>
+      <p>
+        2박 3일, 우리는 일상에서 잠시 나와 예수님을 바라보는 연습을 합니다.
+        예배와 말씀, 나눔과 놀이 속에서 &lsquo;예수를 바라본다&rsquo;는 것이
+        관념이 아니라 삶의 태도임을 배우고,
+        각자의 자리로 돌아가서도 그 시선을 이어가기로 결단합니다.
+      </p>
+    </div>
+
+    <p class="why-closing">이 항해의 목적지는 장소가 아니라, 시선입니다.</p>
   </div>
 </section>
 

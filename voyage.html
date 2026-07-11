@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 여름수련회 | Voyage of Faith</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Noto+Serif+KR:wght@400;500;600;700&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:   #0f2438;
+    --navy:        #1a3a5c;
+    --navy-soft:   #2c4d70;
+    --gold:        #c8860a;
+    --gold-light:  #e8b84b;
+    --cream:       #fdf3df;
+    --cream-deep:  #f5e6c8;
+    --ink:         #ffffff;
+
+    --font-display: 'Playfair Display', serif;
+    --font-kr-display: 'Noto Serif KR', serif;
+    --font-body: 'Pretendard', -apple-system, 'Malgun Gothic', sans-serif;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--navy-deep);
+    overflow-x:hidden;
+  }
+
+  /* ================= HERO ================= */
+
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+
+    /* 실제 사진이 오면 아래 url()만 교체하세요: images/hero.jpg */
+    background-image:
+      linear-gradient(180deg, rgba(10,26,43,.35) 0%, rgba(10,26,43,.55) 45%, rgba(10,26,43,.92) 100%),
+      radial-gradient(120% 90% at 78% 8%, #3a5f82 0%, var(--navy) 42%, var(--navy-deep) 100%),
+      url('images/hero.jpg');
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+  }
+
+  /* 사진 없을 때를 위한 대체 일러스트 레이어 (파도/태양/갈매기) */
+  .hero-illustration{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    opacity:.9;
+  }
+
+  .hero-content{
+    position:relative;
+    z-index:2;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: 8vh 6vw 4vh;
+    max-width: 720px;
+  }
+
+  .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:34px;
+    animation: fadeUp .9s ease .1s both;
+  }
+  .eyebrow-text{
+    font-family: var(--font-body);
+    font-weight:500;
+    font-size:14px;
+    letter-spacing:.22em;
+    color: var(--gold-light);
+    white-space:nowrap;
+  }
+  .eyebrow-line{
+    flex:1;
+    height:1px;
+    background: linear-gradient(90deg, rgba(232,184,75,.7), rgba(232,184,75,.15));
+    max-width:160px;
+  }
+  .eyebrow-compass{ flex-shrink:0; opacity:.9; }
+
+  .hero-title{
+    font-family: var(--font-display);
+    color: var(--ink);
+    line-height:.92;
+    font-weight:600;
+    letter-spacing:.01em;
+    animation: fadeUp 1s ease .25s both;
+  }
+  .hero-title .line1{
+    display:block;
+    font-size: clamp(52px, 11vw, 108px);
+  }
+  .hero-title .line2{
+    display:flex;
+    align-items:baseline;
+    gap: clamp(6px, 1.6vw, 16px);
+  }
+  .hero-title .line2 .of{
+    font-family: var(--font-display);
+    font-style:italic;
+    font-weight:500;
+    color: var(--gold-light);
+    font-size: clamp(40px, 8vw, 78px);
+  }
+  .hero-title .line2 .faith{
+    font-size: clamp(52px, 11vw, 108px);
+  }
+
+  .hero-subtitle{
+    font-family: var(--font-kr-display);
+    font-weight:400;
+    font-size: clamp(17px, 2.4vw, 21px);
+    color: var(--cream);
+    letter-spacing:.03em;
+    margin-top:22px;
+    animation: fadeUp 1s ease .4s both;
+  }
+
+  .hero-verse{
+    display:flex;
+    gap:18px;
+    margin-top:46px;
+    max-width:440px;
+    animation: fadeUp 1s ease .55s both;
+  }
+  .hero-verse-mark{
+    font-family: var(--font-display);
+    font-size:40px;
+    color: var(--gold);
+    line-height:1;
+    flex-shrink:0;
+    margin-top:-4px;
+  }
+  .hero-verse-text p{
+    font-family: var(--font-kr-display);
+    font-size:15.5px;
+    line-height:1.75;
+    color: rgba(253,243,223,.92);
+    font-weight:400;
+  }
+  .hero-verse-ref{
+    display:block;
+    margin-top:10px;
+    font-family: var(--font-body);
+    font-size:12.5px;
+    letter-spacing:.14em;
+    color: var(--gold-light);
+  }
+
+  .scroll-cue{
+    position:absolute;
+    right:6vw;
+    bottom:16vh;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    animation: fadeIn 1s ease 1s both;
+  }
+  .scroll-cue span{
+    writing-mode: vertical-rl;
+    font-size:11px;
+    letter-spacing:.2em;
+    color: rgba(253,243,223,.75);
+  }
+  .scroll-cue svg{ animation: bob 2.2s ease-in-out infinite; }
+
+  /* ---- 하단 정보 바 ---- */
+  .info-bar{
+    position:relative;
+    z-index:2;
+    background: var(--cream);
+    padding: 26px 6vw 30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: clamp(20px, 6vw, 64px);
+    flex-wrap:wrap;
+    text-align:center;
+  }
+  .info-item .info-label{
+    font-size:10.5px;
+    letter-spacing:.2em;
+    color: var(--gold);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .info-item .info-value{
+    font-family: var(--font-kr-display);
+    font-size:15px;
+    color: var(--navy-deep);
+    font-weight:500;
+  }
+  .info-divider{
+    width:1px;
+    height:34px;
+    background: rgba(26,58,92,.18);
+  }
+  .info-anchor{
+    position:absolute;
+    left:50%;
+    bottom:-16px;
+    transform: translateX(-50%);
+    background: var(--cream);
+    width:32px; height:32px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 2px 8px rgba(26,58,92,.12);
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(22px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+  @keyframes fadeIn{ from{opacity:0;} to{opacity:1;} }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(6px); }
+  }
+
+  @media (max-width:560px){
+    .hero-content{ padding: 9vh 7vw 3vh; max-width:100%; }
+    .scroll-cue{ display:none; }
+    .info-bar{ gap:20px 28px; padding:24px 7vw 30px; }
+  }
+
+  /* ================= DESTINATION ================= */
+
+  .destination{
+    position:relative;
+    background: var(--cream);
+    padding: 100px 6vw 90px;
+  }
+
+  .dest-header{
+    max-width:640px;
+    margin: 0 auto 56px;
+  }
+  .dest-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:28px;
+  }
+  .dest-eyebrow-text{
+    font-family: var(--font-body);
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:.24em;
+    color: var(--gold);
+  }
+  .dest-eyebrow-line{
+    flex:1;
+    height:1px;
+    background: linear-gradient(90deg, rgba(200,134,10,.55), rgba(200,134,10,.08));
+    max-width:180px;
+  }
+
+  .dest-title{
+    font-family: var(--font-display);
+    color: var(--navy);
+    font-weight:600;
+    line-height:1.04;
+    font-size: clamp(34px, 6vw, 56px);
+    letter-spacing:.005em;
+  }
+  .dest-title .accent{ color: var(--gold); display:block; }
+
+  .dest-subtitle{
+    font-family: var(--font-kr-display);
+    font-size: clamp(16px, 2vw, 19px);
+    color: var(--navy-soft);
+    margin-top:18px;
+  }
+
+  .dest-address{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    margin-top:24px;
+    font-size:14.5px;
+    color: var(--navy);
+  }
+  .dest-address svg{ flex-shrink:0; margin-top:2px; }
+
+  .dest-body{
+    margin-top:22px;
+    padding-top:22px;
+    border-top: 1px solid rgba(26,58,92,.14);
+    font-size:15px;
+    line-height:1.85;
+    color: var(--navy-soft);
+    max-width:420px;
+  }
+
+  .dest-banner{
+    position:relative;
+    max-width:1180px;
+    margin: 0 auto;
+    border-radius: 4px;
+    overflow:hidden;
+    aspect-ratio: 16/9;
+  }
+  .dest-banner img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position: center 42%;
+    display:block;
+  }
+  .dest-stamp{
+    position:absolute;
+    left:50%;
+    bottom:0;
+    transform: translate(-50%, 50%);
+    width:78px; height:78px;
+    background: var(--cream);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow: 0 4px 14px rgba(15,36,56,.18);
+  }
+
+  .dest-photos{
+    max-width:1180px;
+    margin: 70px auto 0;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:18px;
+  }
+  .dest-photo{
+    position:relative;
+    aspect-ratio: 4/5;
+    border-radius:3px;
+    overflow:hidden;
+    background: var(--cream-deep);
+  }
+  .dest-photo img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .dest-photo-cap{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding: 14px 14px 12px;
+    background: linear-gradient(0deg, rgba(15,36,56,.72), transparent);
+    color: var(--cream);
+    font-size:12.5px;
+    letter-spacing:.04em;
+  }
+
+  .dest-features{
+    max-width:1180px;
+    margin: 64px auto 0;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align:center;
+  }
+  .dest-feature-icon{
+    display:flex;
+    justify-content:center;
+    margin-bottom:14px;
+  }
+  .dest-feature h3{
+    font-family: var(--font-kr-display);
+    font-size:15.5px;
+    font-weight:600;
+    color: var(--navy);
+    margin-bottom:8px;
+  }
+  .dest-feature p{
+    font-size:13px;
+    line-height:1.7;
+    color: var(--navy-soft);
+  }
+
+  .dest-band{
+    margin-top:90px;
+    background: var(--navy-deep);
+    padding: 20px 6vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .dest-band span{
+    font-family: var(--font-body);
+    font-size:11.5px;
+    letter-spacing:.22em;
+    color: rgba(253,243,223,.8);
+  }
+  .dest-band span.gold{ color: var(--gold-light); }
+
+  @media (max-width:720px){
+    .dest-photos{ grid-template-columns: 1fr 1fr; }
+    .dest-photo:first-child{ grid-column: 1 / -1; aspect-ratio:16/10; }
+    .dest-features{ grid-template-columns:1fr; gap:30px; }
+    .destination{ padding: 80px 6vw 70px; }
+  }
+
+  /* 다음 섹션들이 이어질 자리 표시 (임시) */
+  .placeholder-next{
+    padding:80px 6vw 120px;
+    text-align:center;
+    font-family: var(--font-kr-display);
+    color: rgba(26,58,92,.35);
+    font-size:14px;
+    letter-spacing:.05em;
+  }
+  /* ================= PROGRAM SECTIONS ================= */
+
+  .program{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background-color: var(--navy-deep);
+  }
+  .program-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .program-bg img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .program-bg::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(0deg, rgba(10,26,43,.94) 0%, rgba(10,26,43,.55) 42%, rgba(10,26,43,.15) 70%);
+  }
+
+  .program-content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding: 8vh 6vw 9vh;
+    max-width:760px;
+  }
+
+  .program-stage{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:22px;
+  }
+  .program-stage-num{
+    font-family: var(--font-display);
+    font-size:15px;
+    font-weight:600;
+    color: var(--gold-light);
+    letter-spacing:.08em;
+  }
+  .program-stage-dot{
+    width:4px; height:4px;
+    border-radius:50%;
+    background: rgba(232,184,75,.6);
+  }
+  .program-stage-time{
+    font-family: var(--font-body);
+    font-size:12.5px;
+    letter-spacing:.16em;
+    color: rgba(253,243,223,.8);
+  }
+
+  .program-title{
+    font-family: var(--font-kr-display);
+    font-weight:700;
+    color: var(--ink);
+    font-size: clamp(32px, 5.6vw, 52px);
+    line-height:1.2;
+  }
+
+  .program-mood{
+    font-family: var(--font-kr-display);
+    font-style:italic;
+    font-size: clamp(15px, 1.8vw, 17px);
+    color: var(--gold-light);
+    margin-top:14px;
+  }
+
+  .program-body{
+    font-size:14.5px;
+    line-height:1.85;
+    color: rgba(253,243,223,.9);
+    margin-top:20px;
+    max-width:460px;
+  }
+
+  .program-inset{
+    position:absolute;
+    right: 6vw;
+    bottom: 9vh;
+    width: min(220px, 26vw);
+    aspect-ratio: 4/5;
+    border-radius:3px;
+    overflow:hidden;
+    box-shadow: 0 14px 34px rgba(10,26,43,.45);
+    border: 4px solid var(--cream);
+    z-index:2;
+    transform: rotate(2.5deg);
+  }
+  .program-inset img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  @media (max-width:720px){
+    .program-inset{ display:none; }
+    .program-content{ padding: 8vh 7vw 8vh; max-width:100%; }
+  }
+  .program-bg svg{
+    width:100%; height:100%;
+    display:block;
+  }
+  .prayer-cta{
+    background: var(--navy);
+    padding: 70px 6vw;
+    text-align:center;
+  }
+  .prayer-cta p{
+    font-family: var(--font-kr-display);
+    color: var(--cream);
+    font-size:16px;
+    line-height:1.8;
+    margin-bottom:28px;
+  }
+  .prayer-cta a{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-family: var(--font-body);
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:.04em;
+    padding: 15px 30px;
+    border-radius:2px;
+    text-decoration:none;
+    transition: background .2s ease;
+  }
+  .prayer-cta a:hover{ background: var(--gold-light); }
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+  <!-- 실사진 없을 때 대체용 SVG 일러스트 (파도 / 태양 / 갈매기) -->
+  <svg class="hero-illustration" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="180" cy="760" r="120" fill="#e8b84b" opacity="0.18"/>
+    <path d="M0 820 Q 250 780 500 820 T 1000 820 V1000 H0 Z" fill="#132c45" opacity="0.55"/>
+    <path d="M0 870 Q 250 840 500 870 T 1000 870 V1000 H0 Z" fill="#0f2438" opacity="0.75"/>
+    <g opacity="0.55" stroke="#fdf3df" stroke-width="2.2" fill="none" stroke-linecap="round">
+      <path d="M560 300 q14 -16 28 0"/>
+      <path d="M610 330 q14 -16 28 0"/>
+      <path d="M660 280 q14 -16 28 0"/>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <div class="eyebrow">
+      <span class="eyebrow-text">2026 여름수련회</span>
+      <span class="eyebrow-line"></span>
+      <svg class="eyebrow-compass" width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="11" r="9.5" stroke="#e8b84b" stroke-width="1"/>
+        <path d="M11 4 L13 11 L11 18 L9 11 Z" fill="#e8b84b" opacity="0.85"/>
+      </svg>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line1">VOYAGE</span>
+      <span class="line2"><span class="of">of</span><span class="faith">FAITH</span></span>
+    </h1>
+
+    <p class="hero-subtitle">예수님과 함께하는 믿음의 항해</p>
+
+    <div class="hero-verse">
+      <span class="hero-verse-mark">&ldquo;</span>
+      <div class="hero-verse-text">
+        <p>믿음의 주요 또 온전하게 하시는 이인<br>예수를 바라보자.</p>
+        <span class="hero-verse-ref">히브리서 12:2</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>SCROLL</span>
+    <svg width="14" height="24" viewBox="0 0 14 24" fill="none">
+      <path d="M1 1 L7 9 L13 1" stroke="#fdf3df" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M1 13 L7 21 L13 13" stroke="#fdf3df" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="info-bar">
+    <div class="info-anchor">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="3" r="1.6" stroke="#c8860a" stroke-width="1"/>
+        <path d="M8 4.6 V13" stroke="#c8860a" stroke-width="1"/>
+        <path d="M3 9 C3 12 5.5 13.5 8 13.5 C10.5 13.5 13 12 13 9" stroke="#c8860a" stroke-width="1"/>
+        <path d="M2.3 8.3 L3.3 9.3 M13.7 8.3 L12.7 9.3" stroke="#c8860a" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="info-item">
+      <div class="info-label">DATE</div>
+      <div class="info-value">2026. 7. 30 – 8. 1</div>
+    </div>
+    <div class="info-divider"></div>
+    <div class="info-item">
+      <div class="info-label">PLACE</div>
+      <div class="info-value">고창 석남교회</div>
+    </div>
+    <div class="info-divider"></div>
+    <div class="info-item">
+      <div class="info-label">MINISTRY</div>
+      <div class="info-value">군산남성교회 중고등부</div>
+    </div>
+  </div>
+</section>
+
+<section class="destination">
+
+  <div class="dest-header">
+    <div class="dest-eyebrow">
+      <span class="dest-eyebrow-text">DESTINATION</span>
+      <span class="dest-eyebrow-line"></span>
+    </div>
+    <h2 class="dest-title">고창 석남교회<span class="accent">우리의 항해가 시작되는 곳</span></h2>
+    <p class="dest-subtitle">서해 바닷바람이 닿는 상하면 들녘 위, 작은 교회당에서<br>2박 3일의 항해가 시작됩니다.</p>
+
+    <div class="dest-address">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M8 15C8 15 13 10.2 13 6.5C13 3.46 10.76 1 8 1C5.24 1 3 3.46 3 6.5C3 10.2 8 15 8 15Z" stroke="#c8860a" stroke-width="1.2"/>
+        <circle cx="8" cy="6.5" r="2" stroke="#c8860a" stroke-width="1.2"/>
+      </svg>
+      전북특별자치도 고창군 상하면 석남길 38-13
+    </div>
+
+    <p class="dest-body">
+      구시포 해수욕장에서 차로 10분 거리, 조용한 시골 마을 안에 자리한 석남교회.
+      이번 수련회의 모든 프로그램은 이 작은 교회당과 그 앞마당에서
+      펼쳐집니다.
+    </p>
+  </div>
+
+  <div class="dest-banner">
+    <img src="images/seoknam-building.png" alt="고창 석남교회 전경">
+    <div class="dest-stamp">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <circle cx="15" cy="6" r="2.6" stroke="#c8860a" stroke-width="1.3"/>
+        <path d="M15 8.6 V24" stroke="#c8860a" stroke-width="1.3"/>
+        <path d="M6 16.5 C6 22 10 25 15 25 C20 25 24 22 24 16.5" stroke="#c8860a" stroke-width="1.3"/>
+        <path d="M4.6 15.2 L6.6 17.2 M25.4 15.2 L23.4 17.2" stroke="#c8860a" stroke-width="1.3"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="dest-photos">
+    <div class="dest-photo">
+      <img src="images/seoknam-building.png" alt="석남교회 건물">
+      <div class="dest-photo-cap">석남교회 예배당</div>
+    </div>
+    <div class="dest-photo">
+      <img src="images/seoknam-mural.png" alt="석남교회 담벼락 환영 벽화">
+      <div class="dest-photo-cap">교회 담벼락, 환영의 표시</div>
+    </div>
+    <div class="dest-photo">
+      <img src="images/seoknam-map.png" alt="석남교회 위치 지도">
+      <div class="dest-photo-cap">상하면 석남리, 구시포 해수욕장 인근</div>
+    </div>
+  </div>
+
+  <div class="dest-features">
+    <div class="dest-feature">
+      <div class="dest-feature-icon">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <path d="M6 26 V13 L15 6 L24 13 V26" stroke="#c8860a" stroke-width="1.3"/>
+          <path d="M12 26 V18 H18 V26" stroke="#c8860a" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <h3>고요한 시골 풍경</h3>
+      <p>들녘과 바닷바람이 함께하는<br>조용한 환경입니다.</p>
+    </div>
+    <div class="dest-feature">
+      <div class="dest-feature-icon">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <circle cx="10" cy="11" r="3.4" stroke="#c8860a" stroke-width="1.2"/>
+          <circle cx="20" cy="11" r="3.4" stroke="#c8860a" stroke-width="1.2"/>
+          <path d="M3 25 C3 19.5 6.5 17 10 17 C13.5 17 17 19.5 17 25" stroke="#c8860a" stroke-width="1.2"/>
+          <path d="M13 25 C13 19.5 16.5 17 20 17 C23.5 17 27 19.5 27 25" stroke="#c8860a" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>따뜻한 환대</h3>
+      <p>석남교회 성도님들이 3일 내내<br>함께 섬겨주십니다.</p>
+    </div>
+    <div class="dest-feature">
+      <div class="dest-feature-icon">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <path d="M15 5 L18 12 L25 12.6 L19.5 17.3 L21.3 24.4 L15 20.5 L8.7 24.4 L10.5 17.3 L5 12.6 L12 12 Z" stroke="#c8860a" stroke-width="1.2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>구시포 해수욕장</h3>
+      <p>차로 10분, 2일차 오후<br>물놀이 장소입니다.</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="program">
+  <div class="program-bg">
+    <img src="images/mural-finished.png" alt="석남교회 마을 벽화">
+  </div>
+  <div class="program-content">
+    <div class="program-stage">
+      <span class="program-stage-num">01</span>
+      <span class="program-stage-dot"></span>
+      <span class="program-stage-time">DAY 1 · 오전</span>
+    </div>
+    <h2 class="program-title">마을 벽화그리기</h2>
+    <p class="program-mood">붓을 들고, 마을 담벼락에 복음의 색을 입히는 시간</p>
+    <p class="program-body">
+      석남교회가 매년 이어온 마을 섬김 활동입니다.
+      우리 손으로 칠한 파도와 고래가 마을의 표정이 되고,
+      복음이 교회 담장을 넘어 세상을 향한다는 걸
+      몸으로 배우는 하루입니다.
+    </p>
+  </div>
+  <div class="program-inset">
+    <img src="images/mural-working.png" alt="벽화 작업 중인 모습">
+  </div>
+</section>
+
+<section class="program">
+  <div class="program-bg">
+    <img src="images/worship-evening.jpg" alt="개회예배 및 저녁집회">
+  </div>
+  <div class="program-content">
+    <div class="program-stage">
+      <span class="program-stage-num">02</span>
+      <span class="program-stage-dot"></span>
+      <span class="program-stage-time">DAY 1 저녁 · DAY 2 밤</span>
+    </div>
+    <h2 class="program-title">개회예배 & 저녁집회 1·2</h2>
+    <p class="program-mood">누가복음 8장, 예수님을 알아가고 전하는 밤</p>
+    <p class="program-body">
+      청년 찬양팀과 함께 드리는 예배 속에서
+      누가복음 8장의 말씀을 따라 예수님이 누구신지 다시 만나고,
+      그 예수님을 어떻게 전할 수 있을지 마음에 새기는 시간입니다.
+    </p>
+  </div>
+  <div class="program-inset">
+    <img src="images/worship-night.jpg" alt="저녁집회 모습">
+  </div>
+</section>
+
+<section class="program">
+  <div class="program-bg">
+    <img src="images/gusipo-beach.png" alt="구시포 해수욕장">
+  </div>
+  <div class="program-content">
+    <div class="program-stage">
+      <span class="program-stage-num">03</span>
+      <span class="program-stage-dot"></span>
+      <span class="program-stage-time">DAY 2 · 오후</span>
+    </div>
+    <h2 class="program-title">해수욕장 물놀이</h2>
+    <p class="program-mood">파도 속에서 터지는 웃음, 수련회 중간의 쉼표</p>
+    <p class="program-body">
+      석남교회에서 차로 10분, 구시포 해수욕장으로 나갑니다.
+      말씀과 훈련으로 채운 이틀째, 시원한 바닷물에 몸을 던지며
+      함께 웃고 뛰노는 자유로운 시간을 갖습니다.
+    </p>
+  </div>
+  <div class="program-inset">
+    <img src="images/gusipo-sign.png" alt="구시포 해수욕장 표지판">
+  </div>
+</section>
+
+<section class="program">
+  <div class="program-bg">
+    <img src="images/smallgroup-1.jpg" alt="반별 공과모임">
+  </div>
+  <div class="program-content">
+    <div class="program-stage">
+      <span class="program-stage-num">04</span>
+      <span class="program-stage-dot"></span>
+      <span class="program-stage-time">매일 · 소그룹</span>
+    </div>
+    <h2 class="program-title">반별 공과모임</h2>
+    <p class="program-mood">얼굴을 마주하고, 서로의 짐을 나누는 시간</p>
+    <p class="program-body">
+      정해진 반별로 둘러앉아 그날 나눈 말씀을 다시 꺼내놓고,
+      하루 동안 느낀 마음을 솔직하게 이야기합니다.
+      큰 무대보다 작은 테이블에서 믿음은 자랍니다.
+    </p>
+  </div>
+  <div class="program-inset">
+    <img src="images/smallgroup-2.jpg" alt="반별 공과모임 소그룹">
+  </div>
+</section>
+
+<section class="program">
+  <div class="program-bg">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="skyGlow" cx="50%" cy="18%" r="75%">
+          <stop offset="0%" stop-color="#254669"/>
+          <stop offset="55%" stop-color="#132c45"/>
+          <stop offset="100%" stop-color="#0a1a2b"/>
+        </radialGradient>
+        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fdf3df" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#fdf3df" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fff2c9" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#fff2c9" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <rect width="1600" height="900" fill="url(#skyGlow)"/>
+
+      <!-- stars -->
+      <g fill="#fdf3df">
+        <circle cx="120" cy="90" r="2" opacity="0.7"/>
+        <circle cx="260" cy="180" r="1.6" opacity="0.5"/>
+        <circle cx="410" cy="70" r="2.2" opacity="0.8"/>
+        <circle cx="560" cy="150" r="1.4" opacity="0.5"/>
+        <circle cx="90" cy="260" r="1.8" opacity="0.6"/>
+        <circle cx="720" cy="60" r="1.6" opacity="0.6"/>
+        <circle cx="980" cy="110" r="2" opacity="0.7"/>
+        <circle cx="1120" cy="200" r="1.5" opacity="0.5"/>
+        <circle cx="1300" cy="80" r="2.1" opacity="0.7"/>
+        <circle cx="1460" cy="160" r="1.6" opacity="0.55"/>
+        <circle cx="1540" cy="260" r="1.8" opacity="0.6"/>
+        <circle cx="200" cy="330" r="1.3" opacity="0.4"/>
+        <circle cx="850" cy="220" r="1.4" opacity="0.5"/>
+      </g>
+
+      <circle cx="1300" cy="150" r="120" fill="url(#moonGlow)"/>
+      <circle cx="1300" cy="150" r="34" fill="#fdf3df" opacity="0.9"/>
+
+      <!-- fireworks -->
+      <g stroke="#e8b84b" stroke-width="2.2" opacity="0.85" fill="none">
+        <g transform="translate(430,220)">
+          <path d="M0 0 L0 -50 M0 0 L35 -35 M0 0 L48 0 M0 0 L35 35 M0 0 L0 50 M0 0 L-35 35 M0 0 L-48 0 M0 0 L-35 -35"/>
+        </g>
+        <g transform="translate(1080,180) scale(0.7)" stroke="#fdf3df">
+          <path d="M0 0 L0 -50 M0 0 L35 -35 M0 0 L48 0 M0 0 L35 35 M0 0 L0 50 M0 0 L-35 35 M0 0 L-48 0 M0 0 L-35 -35"/>
+        </g>
+        <g transform="translate(760,320) scale(0.55)" stroke="#c8860a">
+          <path d="M0 0 L0 -50 M0 0 L35 -35 M0 0 L48 0 M0 0 L35 35 M0 0 L0 50 M0 0 L-35 35 M0 0 L-48 0 M0 0 L-35 -35"/>
+        </g>
+      </g>
+
+      <!-- sea -->
+      <rect x="0" y="700" width="1600" height="200" fill="#0a1a2b"/>
+      <g stroke="#1a3a5c" stroke-width="2" opacity="0.6" fill="none">
+        <path d="M0 730 Q 100 720 200 730 T 400 730 T 600 730 T 800 730 T 1000 730 T 1200 730 T 1400 730 T 1600 730"/>
+        <path d="M0 770 Q 100 760 200 770 T 400 770 T 600 770 T 800 770 T 1000 770 T 1200 770 T 1400 770 T 1600 770"/>
+      </g>
+
+      <!-- lighthouse pair (흰색 + 빨간색, 구시포 등대 참고) -->
+      <g transform="translate(210,540)">
+        <circle cx="10" cy="-6" r="46" fill="url(#lampGlow)"/>
+        <polygon points="-6,-140 26,-140 34,0 -14,0" fill="#fdf3df"/>
+        <rect x="-14" y="-30" width="48" height="10" fill="#1a3a5c"/>
+        <rect x="-14" y="-90" width="48" height="10" fill="#1a3a5c"/>
+        <polygon points="-10,-140 30,-140 20,-158 0,-158" fill="#c8860a"/>
+        <rect x="-20" y="0" width="60" height="16" fill="#0a1a2b"/>
+      </g>
+      <g transform="translate(300,560)">
+        <circle cx="8" cy="-5" r="30" fill="url(#lampGlow)" opacity="0.85"/>
+        <polygon points="-4,-96 22,-96 28,0 -10,0" fill="#b23b3b"/>
+        <rect x="-10" y="-20" width="38" height="8" fill="#7a2424"/>
+        <polygon points="-7,-96 25,-96 17,-110 1,-110" fill="#fdf3df"/>
+        <rect x="-14" y="0" width="46" height="14" fill="#0a1a2b"/>
+      </g>
+    </svg>
+  </div>
+  <div class="program-content">
+    <div class="program-stage">
+      <span class="program-stage-num">05</span>
+      <span class="program-stage-dot"></span>
+      <span class="program-stage-time">DAY 2 · 밤</span>
+    </div>
+    <h2 class="program-title">등대 · 불꽃놀이</h2>
+    <p class="program-mood">하루를 마무리하는, 캄캄한 밤하늘의 특별한 불빛</p>
+    <p class="program-body">
+      어두워진 바닷가, 등대 불빛 아래로 하늘 위 불꽃이 터집니다.
+      2일차 하루를 함께 돌아보며 웃고 소리 지르는,
+      수련회의 밤을 가장 밝게 채우는 시간입니다.
+    </p>
+  </div>
+</section>
+
+<section class="program">
+  <div class="program-bg">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="dawnSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a3a5c"/>
+          <stop offset="45%" stop-color="#7a6a4f"/>
+          <stop offset="70%" stop-color="#e8b84b"/>
+          <stop offset="100%" stop-color="#fdf3df"/>
+        </linearGradient>
+        <linearGradient id="dawnSea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2c4d70"/>
+          <stop offset="100%" stop-color="#0f2438"/>
+        </linearGradient>
+        <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fff2c9" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#fff2c9" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <rect width="1600" height="620" fill="url(#dawnSky)"/>
+      <rect y="620" width="1600" height="280" fill="url(#dawnSea)"/>
+
+      <circle cx="800" cy="640" r="160" fill="url(#sunGlow)"/>
+      <circle cx="800" cy="640" r="70" fill="#fdf3df" opacity="0.92"/>
+
+      <!-- birds returning -->
+      <g stroke="#0f2438" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.55">
+        <path d="M560 300 q14 -16 28 0"/>
+        <path d="M610 340 q14 -16 28 0"/>
+        <path d="M980 260 q14 -16 28 0"/>
+        <path d="M1030 300 q14 -16 28 0"/>
+      </g>
+
+      <!-- anchor watermark -->
+      <g transform="translate(800,760)" opacity="0.18" stroke="#fdf3df" stroke-width="6" fill="none">
+        <circle cx="0" cy="-90" r="16"/>
+        <path d="M0 -74 V60"/>
+        <path d="M-90 10 C-90 70 -40 100 0 100 C40 100 90 70 90 10"/>
+        <path d="M-100 0 L-80 20 M100 0 L80 20"/>
+      </g>
+
+      <!-- boat at rest -->
+      <g transform="translate(800,650)">
+        <polygon points="-90,40 90,40 60,70 -60,70" fill="#0f2438"/>
+        <rect x="-4" y="-90" width="8" height="130" fill="#0f2438"/>
+        <polygon points="4,-90 4,30 70,30" fill="#fdf3df" opacity="0.85"/>
+        <polygon points="-4,-70 -4,30 -55,30" fill="#e8b84b" opacity="0.7"/>
+      </g>
+      <ellipse cx="800" cy="740" rx="140" ry="10" fill="#0f2438" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="program-content">
+    <div class="program-stage">
+      <span class="program-stage-num">06</span>
+      <span class="program-stage-dot"></span>
+      <span class="program-stage-time">DAY 3 · 오전</span>
+    </div>
+    <h2 class="program-title">폐회예배</h2>
+    <p class="program-mood">결단과 파송, 일상으로 돌아가는 항해의 시작</p>
+    <p class="program-body">
+      3일간의 항해를 마치고, 각자의 자리로 돌아갈 시간입니다.
+      예수를 바라보며 살아가겠다는 결단을 마음에 안고,
+      다시 일상이라는 바다로 나아갑니다.
+    </p>
+  </div>
+</section>
+
+<section class="prayer-cta">
+  <p>수련회를 기다리는 동안,<br>매일 기도카드로 함께 준비해요.</p>
+  <a href="index.html">
+    기도카드 열기
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M2 12 L12 2 M12 2 H5 M12 2 V9" stroke="#0f2438" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</section>
+
+<!-- 학부모님께 -->
+<section style="background:var(--cream); padding:80px 6vw; text-align:center;">
+  <div style="max-width:520px; margin:0 auto;">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" style="margin-bottom:22px;">
+      <circle cx="13" cy="5" r="2.6" stroke="#c8860a" stroke-width="1.3"/>
+      <path d="M13 7.6 V22" stroke="#c8860a" stroke-width="1.3"/>
+      <path d="M4 13.5 C4 19 8 22 13 22 C18 22 22 19 22 13.5" stroke="#c8860a" stroke-width="1.3"/>
+      <path d="M2.6 12.2 L4.6 14.2 M23.4 12.2 L21.4 14.2" stroke="#c8860a" stroke-width="1.3"/>
+    </svg>
+    <p style="font-family:var(--font-kr-display); font-size:17px; line-height:1.9; color:var(--navy);">
+      아이들이 예수님을 바라보며<br>믿음의 항해를 떠날 수 있도록,<br>
+      부모님들의 협력과 기도와 후원을 부탁드립니다.
+    </p>
+  </div>
+</section>
+
+<!-- 마무리 -->
+<footer style="background:var(--navy-deep); padding:60px 6vw 40px; text-align:center;">
+  <p style="font-family:var(--font-kr-display); color:var(--cream); font-size:15px; opacity:.85;">
+    2026 여름수련회 · 예수님과 함께하는 믿음의 항해
+  </p>
+  <p style="font-family:var(--font-body); color:var(--gold-light); font-size:11.5px; letter-spacing:.16em; margin-top:10px;">
+    군산남성교회 중고등부
+  </p>
+</footer>
+
+</body>
+</html>

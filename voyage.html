@@ -678,6 +678,187 @@
     text-align:center;
     padding-top:8px;
   }
+  /* ================= DAY FLOW ================= */
+
+  .dayflow{
+    background: var(--navy-deep);
+    padding: 100px 6vw 90px;
+  }
+  .dayflow-header{
+    max-width:640px;
+    margin: 0 auto 56px;
+    text-align:center;
+  }
+  .dayflow-eyebrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    margin-bottom:24px;
+  }
+  .dayflow-eyebrow-text{
+    font-family: var(--font-body);
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:.24em;
+    color: var(--gold-light);
+  }
+  .dayflow-eyebrow-line{
+    width:60px;
+    height:1px;
+    background: rgba(232,184,75,.5);
+  }
+  .dayflow-title{
+    font-family: var(--font-kr-display);
+    font-weight:700;
+    color: var(--ink);
+    font-size: clamp(26px, 4.2vw, 38px);
+  }
+
+  .dayflow-grid{
+    max-width:1080px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .dayflow-card{
+    background: rgba(253,243,223,.04);
+    border: 1px solid rgba(253,243,223,.12);
+    border-radius:3px;
+    padding: 34px 26px;
+  }
+  .dayflow-day{
+    font-family: var(--font-display);
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.1em;
+    color: var(--gold-light);
+    margin-bottom:6px;
+  }
+  .dayflow-date{
+    font-family: var(--font-body);
+    font-size:12px;
+    letter-spacing:.08em;
+    color: rgba(253,243,223,.55);
+    margin-bottom:22px;
+  }
+  .dayflow-list{
+    list-style:none;
+  }
+  .dayflow-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-family: var(--font-kr-display);
+    font-size:14.5px;
+    line-height:1.6;
+    color: rgba(253,243,223,.9);
+    padding: 10px 0;
+    border-top: 1px solid rgba(253,243,223,.08);
+  }
+  .dayflow-list li:first-child{ border-top:none; }
+  .dayflow-list li::before{
+    content:"";
+    width:5px; height:5px;
+    border-radius:50%;
+    background: var(--gold);
+    margin-top:8px;
+    flex-shrink:0;
+  }
+
+  .dayflow-note{
+    text-align:center;
+    margin-top:40px;
+    font-family: var(--font-body);
+    font-size:12.5px;
+    letter-spacing:.04em;
+    color: rgba(253,243,223,.5);
+  }
+
+  @media (max-width:760px){
+    .dayflow-grid{ grid-template-columns:1fr; gap:18px; }
+    .dayflow{ padding:80px 7vw 70px; }
+  }
+  /* ================= FOOD ================= */
+
+  .food{
+    background: var(--cream);
+    padding: 100px 6vw 90px;
+  }
+  .food-header{
+    max-width:640px;
+    margin: 0 auto 56px;
+    text-align:center;
+  }
+  .food-eyebrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    margin-bottom:24px;
+  }
+  .food-eyebrow-line{
+    width:60px;
+    height:1px;
+    background: rgba(200,134,10,.5);
+  }
+  .food-eyebrow-text{
+    font-family: var(--font-body);
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:.24em;
+    color: var(--gold);
+  }
+  .food-title{
+    font-family: var(--font-kr-display);
+    font-weight:700;
+    color: var(--navy);
+    font-size: clamp(26px, 4.2vw, 38px);
+  }
+  .food-subtitle{
+    font-family: var(--font-kr-display);
+    font-size:15px;
+    color: var(--navy-soft);
+    margin-top:14px;
+  }
+
+  .food-grid{
+    max-width:1080px;
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(26,58,92,.14);
+    border: 1px solid rgba(26,58,92,.14);
+  }
+  .food-card{
+    background: var(--cream);
+    padding: 40px 30px;
+    text-align:center;
+  }
+  .food-icon{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+  }
+  .food-card h3{
+    font-family: var(--font-kr-display);
+    font-size:16px;
+    font-weight:600;
+    color: var(--navy);
+    margin-bottom:10px;
+  }
+  .food-card p{
+    font-size:13px;
+    line-height:1.7;
+    color: var(--navy-soft);
+  }
+
+  @media (max-width:760px){
+    .food-grid{ grid-template-columns: 1fr; }
+    .food{ padding:80px 7vw 70px; }
+  }
 </style>
 </head>
 <body>
@@ -900,6 +1081,52 @@
 
 </section>
 
+<section class="dayflow">
+  <div class="dayflow-header">
+    <div class="dayflow-eyebrow">
+      <span class="dayflow-eyebrow-line"></span>
+      <span class="dayflow-eyebrow-text">ITINERARY</span>
+      <span class="dayflow-eyebrow-line"></span>
+    </div>
+    <h2 class="dayflow-title">2박 3일, 항해의 흐름</h2>
+  </div>
+
+  <div class="dayflow-grid">
+    <div class="dayflow-card">
+      <div class="dayflow-day">DAY 1</div>
+      <div class="dayflow-date">7. 30 (목)</div>
+      <ul class="dayflow-list">
+        <li>마을 벽화그리기</li>
+        <li>개회예배</li>
+        <li>공동체 게임</li>
+        <li>저녁집회 1</li>
+      </ul>
+    </div>
+    <div class="dayflow-card">
+      <div class="dayflow-day">DAY 2</div>
+      <div class="dayflow-date">7. 31 (금)</div>
+      <ul class="dayflow-list">
+        <li>반별 공과모임</li>
+        <li>해수욕장 물놀이</li>
+        <li>저녁집회 2</li>
+        <li>등대 · 불꽃놀이</li>
+      </ul>
+    </div>
+    <div class="dayflow-card">
+      <div class="dayflow-day">DAY 3</div>
+      <div class="dayflow-date">8. 1 (토)</div>
+      <ul class="dayflow-list">
+        <li>반별 공과모임</li>
+        <li>공동체 게임</li>
+        <li>폐회예배</li>
+        <li>귀가</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="dayflow-note">정확한 시간은 별도 가정통신문을 참고해주세요.</p>
+</section>
+
 <section class="program">
   <div class="program-bg">
     <img src="images/mural-finished.png" alt="석남교회 마을 벽화">
@@ -997,6 +1224,80 @@
   <div class="program-bg">
     <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
+        <linearGradient id="gameSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e8b84b"/>
+          <stop offset="55%" stop-color="#c8860a"/>
+          <stop offset="100%" stop-color="#1a3a5c"/>
+        </linearGradient>
+      </defs>
+      <rect width="1600" height="900" fill="url(#gameSky)"/>
+
+      <!-- confetti -->
+      <g opacity="0.85">
+        <circle cx="180" cy="140" r="9" fill="#fdf3df"/>
+        <rect x="330" y="90" width="14" height="14" fill="#1a3a5c" transform="rotate(20 337 97)"/>
+        <circle cx="500" cy="200" r="7" fill="#fdf3df"/>
+        <rect x="650" y="120" width="12" height="12" fill="#0f2438" transform="rotate(-15 656 126)"/>
+        <circle cx="820" cy="80" r="8" fill="#fdf3df"/>
+        <rect x="980" y="160" width="14" height="14" fill="#1a3a5c" transform="rotate(35 987 167)"/>
+        <circle cx="1150" cy="110" r="9" fill="#fdf3df"/>
+        <rect x="1300" y="70" width="12" height="12" fill="#0f2438" transform="rotate(-25 1306 76)"/>
+        <circle cx="1440" cy="190" r="7" fill="#fdf3df"/>
+        <circle cx="1520" cy="90" r="6" fill="#fdf3df"/>
+        <rect x="80" y="260" width="10" height="10" fill="#0f2438" transform="rotate(10 85 265)"/>
+      </g>
+
+      <!-- ground -->
+      <rect y="720" width="1600" height="180" fill="#1a3a5c"/>
+      <rect y="720" width="1600" height="10" fill="#0f2438" opacity="0.4"/>
+
+      <!-- 사람 실루엣: 함께 뛰며 손 맞잡는 모습 (추상적 플랫 스타일) -->
+      <g fill="#fdf3df">
+        <g transform="translate(620,620)">
+          <circle cx="0" cy="-92" r="26"/>
+          <path d="M-30 -60 Q0 -80 30 -60 L38 20 Q0 40 -38 20 Z"/>
+          <path d="M-30 -55 L-70 -95 M30 -55 L64 -30"/>
+          <path d="M-20 20 L-34 100 M18 20 L34 100"/>
+        </g>
+        <g transform="translate(800,600)">
+          <circle cx="0" cy="-118" r="28"/>
+          <path d="M-32 -84 Q0 -106 32 -84 L40 24 Q0 46 -40 24 Z"/>
+          <path d="M-32 -78 L-66 -30 M32 -78 L66 -30"/>
+          <path d="M-22 24 L-38 108 M20 24 L38 108"/>
+        </g>
+        <g transform="translate(990,625)">
+          <circle cx="0" cy="-90" r="25"/>
+          <path d="M-28 -58 Q0 -78 28 -58 L36 18 Q0 38 -36 18 Z"/>
+          <path d="M-28 -52 L-62 -22 M28 -52 L58 -88"/>
+          <path d="M-18 18 L-32 96 M16 18 L32 96"/>
+        </g>
+      </g>
+
+      <!-- 리본 아치 -->
+      <path d="M420 400 Q800 220 1180 400" stroke="#fdf3df" stroke-width="6" fill="none" opacity="0.5" stroke-dasharray="2 22" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="program-content">
+    <div class="program-stage">
+      <span class="program-stage-num">05</span>
+      <span class="program-stage-dot"></span>
+      <span class="program-stage-time">DAY 1 · DAY 3 오전</span>
+    </div>
+    <h2 class="program-title">공동체 게임</h2>
+    <p class="program-mood">함께 뛰고 웃으며 조금 더 가까워지는 시간</p>
+    <p class="program-body">
+      도착한 첫날 저녁, 서먹함을 깨는 팀 게임으로 항해를 시작하고,
+      3일째 아침 마지막 반별 공과모임을 마친 뒤에는
+      다 함께 몸을 부딪히며 노는 단체 게임으로 마무리합니다.
+      웃음 속에서 서로 조금 더 가까워지는 시간입니다.
+    </p>
+  </div>
+</section>
+
+<section class="program">
+  <div class="program-bg">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
         <radialGradient id="skyGlow" cx="50%" cy="18%" r="75%">
           <stop offset="0%" stop-color="#254669"/>
           <stop offset="55%" stop-color="#132c45"/>
@@ -1074,7 +1375,7 @@
   </div>
   <div class="program-content">
     <div class="program-stage">
-      <span class="program-stage-num">05</span>
+      <span class="program-stage-num">06</span>
       <span class="program-stage-dot"></span>
       <span class="program-stage-time">DAY 2 · 밤</span>
     </div>
@@ -1142,7 +1443,7 @@
   </div>
   <div class="program-content">
     <div class="program-stage">
-      <span class="program-stage-num">06</span>
+      <span class="program-stage-num">07</span>
       <span class="program-stage-dot"></span>
       <span class="program-stage-time">DAY 3 · 오전</span>
     </div>
@@ -1153,6 +1454,91 @@
       예수를 바라보며 살아가겠다는 결단을 마음에 안고,
       다시 일상이라는 바다로 나아갑니다.
     </p>
+  </div>
+</section>
+
+<section class="food">
+  <div class="food-header">
+    <div class="food-eyebrow">
+      <span class="food-eyebrow-line"></span>
+      <span class="food-eyebrow-text">ON THE TABLE</span>
+      <span class="food-eyebrow-line"></span>
+    </div>
+    <h2 class="food-title">항해 중 만나는 식탁</h2>
+    <p class="food-subtitle">몸을 쓴 만큼, 든든하고 즐겁게 채웁니다</p>
+  </div>
+
+  <div class="food-grid">
+    <div class="food-card">
+      <div class="food-icon">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <path d="M9 30 L9 20 M13 30 L13 18 M17 30 L17 21 M21 30 L21 18 M25 30 L25 20" stroke="#c8860a" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M11 14 C11 10 8 9 8 5 M17 15 C17 11 14 10 14 5 M23 14 C23 10 20 9 20 5" stroke="#c8860a" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <h3>바베큐</h3>
+      <p>숯불 위에서 지글지글 익어가는<br>여름밤의 저녁 식사</p>
+    </div>
+
+    <div class="food-card">
+      <div class="food-icon">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <path d="M5 15 C5 24 12 29 17 29 C22 29 29 24 29 15" stroke="#c8860a" stroke-width="1.6"/>
+          <path d="M4 15 H30" stroke="#c8860a" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M12 15 Q17 8 22 15" stroke="#c8860a" stroke-width="1.4" fill="none"/>
+        </svg>
+      </div>
+      <h3>이색 비빔밥</h3>
+      <p>매일 똑같지 않은,<br>이번 여름만의 특별한 한 그릇</p>
+    </div>
+
+    <div class="food-card">
+      <div class="food-icon">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <rect x="4" y="13" width="26" height="16" rx="1" stroke="#c8860a" stroke-width="1.6"/>
+          <circle cx="11" cy="21" r="3.4" stroke="#c8860a" stroke-width="1.4"/>
+          <circle cx="20" cy="19" r="2.6" stroke="#c8860a" stroke-width="1.4"/>
+          <circle cx="25" cy="23" r="2" stroke="#c8860a" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <h3>석남교회 손맛 백반</h3>
+      <p>성도님들이 정성껏 차려주시는<br>집밥 같은 든든한 한 끼</p>
+    </div>
+
+    <div class="food-card">
+      <div class="food-icon">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <circle cx="17" cy="17" r="8" stroke="#c8860a" stroke-width="1.6"/>
+          <path d="M17 3 V6 M17 28 V31 M3 17 H6 M28 17 H31 M7 7 L9.2 9.2 M24.8 24.8 L27 27 M27 7 L24.8 9.2 M9.2 24.8 L7 27" stroke="#c8860a" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>아침, 어메리칸 스타일</h3>
+      <p>가볍고 산뜻하게<br>하루를 여는 조식</p>
+    </div>
+
+    <div class="food-card">
+      <div class="food-icon">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <path d="M17 4 C10 4 6 10 6 15 C6 21 12 27 17 31 C22 27 28 21 28 15 C28 10 24 4 17 4Z" stroke="#c8860a" stroke-width="1.6"/>
+          <circle cx="17" cy="15" r="4.4" stroke="#c8860a" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <h3>근처 맛집 나들이</h3>
+      <p>정식 일정에 포함된<br>인근 맛집 외식 시간</p>
+    </div>
+
+    <div class="food-card">
+      <div class="food-icon">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <path d="M6 13 L28 13 L25 28 H9 Z" stroke="#c8860a" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M6 13 C6 8 10 5 17 5 C24 5 28 8 28 13" stroke="#c8860a" stroke-width="1.6"/>
+          <circle cx="14" cy="19" r="1.6" fill="#c8860a"/>
+          <circle cx="20" cy="22" r="1.6" fill="#c8860a"/>
+        </svg>
+      </div>
+      <h3>수시 간식</h3>
+      <p>활동 사이사이<br>달콤하고 짭짤하게 채우는 즐거움</p>
+    </div>
   </div>
 </section>
 
